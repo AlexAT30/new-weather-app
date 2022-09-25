@@ -16,8 +16,8 @@ const DeleteModal = ({ open, setOpen }: props): JSX.Element => {
   return (
     <ModalLayout open={open}>
       <CardContent>
-        <Typography variant="h5" color="initial" align="center">
-          ¿Realmente deseas eliminar al usuario :id?
+        <Typography variant="h6" color="initial" align="center">
+          ¿Realmente deseas eliminar a Nombre de usuario?
         </Typography>
       </CardContent>
       <CardActions>

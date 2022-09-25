@@ -13,12 +13,18 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../context/store'
 import { ThemeType } from '../types/config.types'
 
-const AddUser = (): JSX.Element => {
+interface props {
+  setCreateModal: React.Dispatch<React.SetStateAction<number>>
+}
+const AddUser = ({ setCreateModal }: props): JSX.Element => {
   const theme = useSelector((state: RootState) => state.config.theme)
+  const handleCreateModal = (): void => {
+    setCreateModal(1)
+  }
   return (
-    <Grid item xs={4}>
-      <Card sx={{ height: 200 }}>
-        <CardActionArea sx={{ height: '100%' }}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Card sx={{ height: 225 }}>
+        <CardActionArea sx={{ height: '100%' }} onClick={handleCreateModal}>
           <CardContent>
             <Typography variant="h6" align="center">
               Crear usuario

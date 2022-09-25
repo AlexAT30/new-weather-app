@@ -16,6 +16,7 @@ interface Props {
   lat: string
   lon: string
   setDeleteModal: React.Dispatch<React.SetStateAction<number>>
+  setEditModal: React.Dispatch<React.SetStateAction<number>>
 }
 
 const UserMin = ({
@@ -23,16 +24,27 @@ const UserMin = ({
   username,
   lat,
   lon,
-  setDeleteModal
+  setDeleteModal,
+  setEditModal
 }: Props): JSX.Element => {
+  const handleEditModal = (): void => {
+    setEditModal(id)
+  }
+  const handleDeleteModal = (): void => {
+    setDeleteModal(id)
+  }
+
   return (
-    <Grid item xs={4}>
-      <Card sx={{ height: 200 }}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Card sx={{ height: 225 }}>
         <CardContent>
           <Typography variant="caption" color="text.secondary">
             Id: {id}
           </Typography>
           <Typography variant="h6">{username}</Typography>
+          <Typography variant="subtitle1" color="GrayText">
+            Ciudad
+          </Typography>
           <Typography variant="body1">Latitud: {lat}</Typography>
           <Typography variant="body1">Longitud: {lon}</Typography>
         </CardContent>
@@ -44,13 +56,10 @@ const UserMin = ({
           >
             Ver
           </Button>
-          <Button size="small">Editar</Button>
-          <Button
-            size="small"
-            onClick={() => {
-              setDeleteModal(id)
-            }}
-          >
+          <Button size="small" onClick={handleEditModal}>
+            Editar
+          </Button>
+          <Button size="small" onClick={handleDeleteModal}>
             Eliminar
           </Button>
         </CardActions>

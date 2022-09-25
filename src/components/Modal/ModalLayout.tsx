@@ -16,7 +16,7 @@ const ModalLayout = ({ children, open }: props): JSX.Element => {
         alignItems="center"
         sx={{ height: '100vh' }}
       >
-        <Grid item xs={4}>
+        <Grid item xs='auto'>
           <Card>{children}</Card>
         </Grid>
       </Grid>
