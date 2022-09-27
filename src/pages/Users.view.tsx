@@ -14,28 +14,17 @@ const UsersView = (): JSX.Element => {
   const [createModal, setCreateModal] = useState<number>(0)
 
   const users = useSelector((state: RootState) => state.app_state.users)
+
   return (
     <Grid container spacing={2} marginY={2}>
       <Title text="Lista de usuarios" />
       <DeleteModal open={deleteModal} setOpen={setDeleteModal} />
-      <CreateEditModal
-        title="Escriba los nuevos datos del usuario"
-        open={editModal}
-        setOpen={setEditModal}
-      />
-      <CreateEditModal
-        title="Rellena los campos para crear un nuevo usuario"
-        open={createModal}
-        setOpen={setCreateModal}
-      />
+      <CreateEditModal edit open={editModal} setOpen={setEditModal} />
+      <CreateEditModal open={createModal} setOpen={setCreateModal} />
       {users.map((user) => (
         <UserMin
-          key={`${user.username}`}
-          id={user.id}
-          username={user.username}
-          city={user.city}
-          lat={user.lat}
-          lon={user.lon}
+          key={`user_min_${user.username}_${user.id}`}
+          user={user}
           setDeleteModal={setDeleteModal}
           setEditModal={setEditModal}
         />

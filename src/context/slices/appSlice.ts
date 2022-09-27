@@ -8,38 +8,48 @@ const initialState: Users_I = {
   users: [
     {
       id: 1,
-      username: 'usuario 1',
-      city: 'ciudad 1',
-      lat: '1234',
-      lon: '123'
+      username: 'Alejandro',
+      city: 'Zapopan',
+      state: 'Jalisco',
+      country: 'MX',
+      lat: 20.7211203,
+      lon: -103.3913671
     },
     {
       id: 2,
-      username: 'usuario 2',
-      city: 'ciudad 2',
-      lat: '123',
-      lon: '123'
+      username: 'Evelyn',
+      city: 'Guadalajara',
+      state: 'Jalisco',
+      country: 'MX',
+      lat: 20.6720375,
+      lon: -103.338396
     },
     {
       id: 3,
-      username: 'usuario 3',
-      city: 'ciudad 3',
-      lat: '123',
-      lon: '123'
+      username: 'Harry',
+      city: 'Lincoln',
+      state: 'England',
+      country: 'GB',
+      lat: 53.2336301,
+      lon: -0.5392172
     },
     {
       id: 4,
-      username: 'usuario 4',
-      city: 'ciudad 4',
-      lat: '123',
-      lon: '123'
+      username: 'María',
+      city: 'Francia',
+      state: 'San Luis',
+      country: 'AR',
+      lat: -33.28253515,
+      lon: -66.34082394382389
     },
     {
       id: 5,
-      username: 'usuario 5',
-      city: 'ciudad 5',
-      lat: '123',
-      lon: '123'
+      username: 'Brayan',
+      city: 'Tlajomulco',
+      state: 'Jalisco',
+      country: 'MX',
+      lat: 20.4737273,
+      lon: -103.4469713
     }
   ]
 }
@@ -56,9 +66,12 @@ const appSlice = createSlice({
         if (user.id === action.payload.id) return action.payload
         return user
       })
+    },
+    createUser: (state, action: PayloadAction<User_I>) => {
+      state.users = [...state.users, action.payload]
     }
   }
 })
 
-export const { deleteUser, editUser } = appSlice.actions
+export const { deleteUser, editUser, createUser } = appSlice.actions
 export default appSlice.reducer
