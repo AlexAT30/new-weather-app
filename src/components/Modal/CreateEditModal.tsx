@@ -7,6 +7,9 @@ import {
   Grid,
   Typography
 } from '@mui/material'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { editUser } from '../../context/slices/appSlice'
 
 interface props {
   title: string
@@ -14,8 +17,20 @@ interface props {
   setOpen: React.Dispatch<React.SetStateAction<number>>
 }
 const CreateEditModal = ({ title, open, setOpen }: props): JSX.Element => {
+  const [username, setUsername] = useState<string>('')
+  const [city, setCity] = useState<string>('')
+
+  const dispatch = useDispatch()
   const handleEditUser = (): void => {
-    // Eliminar usuario
+    dispatch(
+      editUser({
+        id: open,
+        username,
+        city,
+        lat: '123',
+        lon: '123'
+      })
+    )
     setOpen(0)
   }
   const handleCloseModal = (): void => {
@@ -28,8 +43,8 @@ const CreateEditModal = ({ title, open, setOpen }: props): JSX.Element => {
           {title}
         </Typography>
         <Grid container gap={2} flexDirection="column">
-          <TextField label="Nombre de usuario" size="small" />
-          <TextField label="Ciudad" size="small" />
+          <TextField label="Nombre de usuario" size="small" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <TextField label="Ciudad" size="small" value={city} onChange={(e) => setCity(e.target.value)} />
         </Grid>
       </CardContent>
       <CardActions>

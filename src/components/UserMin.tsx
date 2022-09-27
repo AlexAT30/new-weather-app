@@ -13,6 +13,7 @@ import { DETAIL_PATH } from '../router/paths'
 interface Props {
   id: number
   username: string
+  city: string
   lat: string
   lon: string
   setDeleteModal: React.Dispatch<React.SetStateAction<number>>
@@ -22,6 +23,7 @@ interface Props {
 const UserMin = ({
   id,
   username,
+  city,
   lat,
   lon,
   setDeleteModal,
@@ -43,7 +45,7 @@ const UserMin = ({
           </Typography>
           <Typography variant="h6">{username}</Typography>
           <Typography variant="subtitle1" color="GrayText">
-            Ciudad
+            {city}
           </Typography>
           <Typography variant="body1">Latitud: {lat}</Typography>
           <Typography variant="body1">Longitud: {lon}</Typography>

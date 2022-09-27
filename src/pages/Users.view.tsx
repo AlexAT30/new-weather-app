@@ -5,11 +5,15 @@ import DeleteModal from '../components/Modal/DeleteModal'
 import CreateEditModal from '../components/Modal/CreateEditModal'
 import Title from '../components/Title'
 import UserMin from '../components/UserMin'
+import { useSelector } from 'react-redux'
+import { RootState } from '../context/store'
 
 const UsersView = (): JSX.Element => {
   const [deleteModal, setDeleteModal] = useState<number>(0)
   const [editModal, setEditModal] = useState<number>(0)
   const [createModal, setCreateModal] = useState<number>(0)
+
+  const users = useSelector((state: RootState) => state.app_state.users)
   return (
     <Grid container spacing={2} marginY={2}>
       <Title text="Lista de usuarios" />
@@ -24,14 +28,18 @@ const UsersView = (): JSX.Element => {
         open={createModal}
         setOpen={setCreateModal}
       />
-      <UserMin
-        id={1}
-        username="Nombre de usuario"
-        lat="123"
-        lon="123"
-        setDeleteModal={setDeleteModal}
-        setEditModal={setEditModal}
-      />
+      {users.map((user) => (
+        <UserMin
+          key={`${user.username}`}
+          id={user.id}
+          username={user.username}
+          city={user.city}
+          lat={user.lat}
+          lon={user.lon}
+          setDeleteModal={setDeleteModal}
+          setEditModal={setEditModal}
+        />
+      ))}
       <AddUser setCreateModal={setCreateModal} />
     </Grid>
   )

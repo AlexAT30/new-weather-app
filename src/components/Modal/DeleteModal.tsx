@@ -1,13 +1,16 @@
 import ModalLayout from './ModalLayout'
 import { CardContent, CardActions, Typography, Button } from '@mui/material'
+import { useDispatch } from 'react-redux'
+import { deleteUser } from '../../context/slices/appSlice'
 
 interface props {
   open: number
   setOpen: React.Dispatch<React.SetStateAction<number>>
 }
 const DeleteModal = ({ open, setOpen }: props): JSX.Element => {
+  const dispatch = useDispatch()
   const handleDeleteUser = (): void => {
-    // Eliminar usuario
+    dispatch(deleteUser(open))
     setOpen(0)
   }
   const handleCloseModal = (): void => {
@@ -17,7 +20,7 @@ const DeleteModal = ({ open, setOpen }: props): JSX.Element => {
     <ModalLayout open={open}>
       <CardContent>
         <Typography variant="h6" color="initial" align="center">
-          ¿Realmente deseas eliminar a Nombre de usuario?
+          ¿Realmente deseas eliminar al usuario {open}?
         </Typography>
       </CardContent>
       <CardActions>
