@@ -23,11 +23,11 @@ const AddUser = ({ setCreateModal }: props): JSX.Element => {
   }
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
-      <Card sx={{ height: 225 }}>
+      <Card sx={{ height: 250 }}>
         <CardActionArea sx={{ height: '100%' }} onClick={handleCreateModal}>
           <CardContent>
             <Typography variant="h6" align="center">
-              Crear usuario
+              Create new user
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center' }} mt={1}>
               <Avatar

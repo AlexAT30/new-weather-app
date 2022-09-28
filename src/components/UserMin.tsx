@@ -6,7 +6,6 @@ import {
   CardActions,
   Button
 } from '@mui/material'
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { DETAIL_PATH } from '../router/paths'
 import { User_I } from '../types/users.types'
@@ -31,7 +30,7 @@ const UserMin = ({
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
-      <Card sx={{ height: 225 }}>
+      <Card sx={{ height: 250 }}>
         <CardContent>
           <Typography variant="caption" color="text.secondary">
             Id: {user.id}
@@ -40,8 +39,8 @@ const UserMin = ({
           <Typography variant="subtitle1" color="GrayText">
             {user.city}, {user.state} - {user.country}
           </Typography>
-          <Typography variant="body1">Latitud: {user.lat}</Typography>
-          <Typography variant="body1">Longitud: {user.lon}</Typography>
+          <Typography variant="body1">Latitude: {user.lat}</Typography>
+          <Typography variant="body1">Longitude: {user.lon}</Typography>
         </CardContent>
         <CardActions>
           <Button
@@ -49,13 +48,13 @@ const UserMin = ({
             component={Link}
             to={DETAIL_PATH.replace(':id', `${user.id}`)}
           >
-            Ver
+            View
           </Button>
           <Button size="small" onClick={handleEditModal}>
-            Editar
+            Edit
           </Button>
           <Button size="small" onClick={handleDeleteModal}>
-            Eliminar
+            Delete
           </Button>
         </CardActions>
       </Card>

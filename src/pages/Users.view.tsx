@@ -17,7 +17,7 @@ const UsersView = (): JSX.Element => {
 
   return (
     <Grid container spacing={2} marginY={2}>
-      <Title text="Lista de usuarios" />
+      <Title text="User list" />
       <DeleteModal open={deleteModal} setOpen={setDeleteModal} />
       <CreateEditModal edit open={editModal} setOpen={setEditModal} />
       <CreateEditModal open={createModal} setOpen={setCreateModal} />

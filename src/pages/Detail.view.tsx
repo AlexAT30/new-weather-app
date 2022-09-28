@@ -4,7 +4,7 @@ import UserInfo from '../components/UserInfo'
 const DetailView = (): JSX.Element => {
   return (
     <Grid container spacing={2} marginY={2}>
-      <Title text={'Vista detallada'} />
+      <Title text={'Detail view'} />
       <UserInfo />
     </Grid>
   )

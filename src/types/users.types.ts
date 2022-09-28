@@ -9,9 +9,9 @@ export interface User_I {
 }
 
 export interface GeoData_I {
-  country: string
   name: string
-  state: string
+  region: string
+  country: string
   lat: number
   lon: number
 }

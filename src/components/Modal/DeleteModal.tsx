@@ -20,15 +20,15 @@ const DeleteModal = ({ open, setOpen }: props): JSX.Element => {
     <ModalLayout open={open}>
       <CardContent>
         <Typography variant="h6" align="center">
-          ¿Realmente deseas eliminar al usuario {open}?
+          Do you really want to remove user {open}?
         </Typography>
       </CardContent>
       <CardActions>
         <Button variant="text" color="primary" onClick={handleDeleteUser}>
-          Confirmar
+          Confirm
         </Button>
         <Button variant="text" color="primary" onClick={handleCloseModal}>
-          Cancelar
+          Cancel
         </Button>
       </CardActions>
     </ModalLayout>

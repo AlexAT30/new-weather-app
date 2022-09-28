@@ -7,13 +7,13 @@ import { persistReducer } from 'redux-persist'
 // Reducers
 import configReducer from './slices/configSlice'
 import appReducer from './slices/appSlice'
-import { geoApi } from './api'
+import { weatherApi } from './api'
 import { setupListeners } from '@reduxjs/toolkit/dist/query'
 
 const reducers = combineReducers({
   config: configReducer,
   app_state: appReducer,
-  [geoApi.reducerPath]: geoApi.reducer
+  [weatherApi.reducerPath]: weatherApi.reducer
 })
 
 const persistConfig = {
@@ -25,7 +25,7 @@ const persistedReducers = persistReducer(persistConfig, reducers)
 const store = configureStore({
   reducer: persistedReducers,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(geoApi.middleware)
+    getDefaultMiddleware({ serializableCheck: false }).concat(weatherApi.middleware)
 })
 
 setupListeners(store.dispatch)
