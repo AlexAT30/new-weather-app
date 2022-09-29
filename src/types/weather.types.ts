@@ -2,7 +2,7 @@ export interface WeatherResponse_I {
   list: WeatherData_I[]
 }
 export interface WeatherData_I {
-  dt: string
+  dt: number
   main: WeatherDataMain_I
   weather: WeatherDataWeather_I[]
   clouds: WeatherDataClouds_I

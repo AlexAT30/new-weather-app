@@ -11,45 +11,45 @@ const initialState: Users_I = {
       username: 'Alejandro',
       city: 'Zapopan',
       state: 'Jalisco',
-      country: 'MX',
-      lat: 20.7211203,
-      lon: -103.3913671
+      country: 'Mexico',
+      lat: 20.72,
+      lon: -103.38
     },
     {
       id: 2,
       username: 'Evelyn',
       city: 'Guadalajara',
       state: 'Jalisco',
-      country: 'MX',
-      lat: 20.6720375,
-      lon: -103.338396
+      country: 'Mexico',
+      lat: 20.67,
+      lon: -103.39
     },
     {
       id: 3,
       username: 'Harry',
       city: 'Lincoln',
-      state: 'England',
-      country: 'GB',
-      lat: 53.2336301,
-      lon: -0.5392172
+      state: 'Nebraska',
+      country: 'United States of America',
+      lat: 40.8,
+      lon: -96.67
     },
     {
       id: 4,
       username: 'María',
       city: 'Francia',
-      state: 'San Luis',
-      country: 'AR',
-      lat: -33.28253515,
-      lon: -66.34082394382389
+      state: 'Colon',
+      country: 'Honduras',
+      lat: 15.85,
+      lon: -85.58
     },
     {
       id: 5,
       username: 'Brayan',
-      city: 'Tlajomulco',
+      city: 'Tlajomulco De Zuñiga',
       state: 'Jalisco',
-      country: 'MX',
-      lat: 20.4737273,
-      lon: -103.4469713
+      country: 'Mexico',
+      lat: 20.47,
+      lon: -103.45
     }
   ]
 }

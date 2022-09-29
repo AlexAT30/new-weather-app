@@ -16,10 +16,10 @@ export const weatherApi = createApi({
     getWeatherDataCurrent: builder.query<WeatherData_I, queryData>({
       query: ({ lat, lon }: queryData) => `/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
     }),
-    getWeatherDataFuture: builder.query<WeatherResponse_I, queryData>({
+    getWeatherDataForecast: builder.query<WeatherResponse_I, queryData>({
       query: ({ lat, lon }: queryData) => `/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`
     })
   })
 })
 
-export const { useGetWeatherDataFutureQuery, useGetWeatherDataCurrentQuery } = weatherApi
+export const { useGetWeatherDataForecastQuery, useGetWeatherDataCurrentQuery } = weatherApi

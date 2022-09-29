@@ -1,48 +1,44 @@
-import { Navigate, useParams } from 'react-router-dom'
-import { Grid, Card, CardContent, CircularProgress } from '@mui/material'
+import { Grid, Card, CardContent, CircularProgress, IconButton, Typography } from '@mui/material'
+import UpdateIcon from '@mui/icons-material/Update'
 
-import { WeatherData_I } from '../../types/weather.types'
 import { useGetWeatherDataCurrentQuery } from '../../context/api'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../context/store'
-
 import UserData from './UserData'
 import WeatherData from './WeatherData'
 import WeatherInfo from './WeatherInfo'
 
-import { NOTFOUND_PATH } from '../../router/paths'
+import moment from 'moment'
+import { User_I } from '../../types/users.types'
 
-const UserInfo = (): JSX.Element => {
-  const params = useParams()
-  const SEARCH_USER: number = parseInt(params.id as string) ?? 0
-  const user = useSelector((state: RootState) =>
-    state.app_state.users.find((user) => user.id === SEARCH_USER)
-  )
-
-  if (user === undefined) {
-    return <Navigate to={NOTFOUND_PATH} />
-  }
-
-  const { data, isLoading } = useGetWeatherDataCurrentQuery({
+interface props {
+  user: User_I
+}
+const UserInfo = ({ user }: props): JSX.Element => {
+  const { data, isLoading, refetch } = useGetWeatherDataCurrentQuery({
     lat: user.lat,
     lon: user.lon
   })
 
-  if (isLoading) {
+  if (isLoading || data === undefined) {
     return (
-      <Grid item xs={11} sm={7} md={5} lg={4}>
+      <Grid item xs={12} sm={6} md={5} lg={4}>
         <CircularProgress sx={{ margin: '32px 32px' }} />
       </Grid>
     )
   }
 
   return (
-    <Grid item xs={11} sm={7} md={6} lg={4}>
+    <Grid item xs={12} sm={6} md={5} lg={4}>
       <Card>
         <CardContent>
           <UserData user={user} />
-          <WeatherData weatherData={data as WeatherData_I} />
-          <WeatherInfo weatherData={data as WeatherData_I} />
+          <WeatherData weatherData={data} />
+          <IconButton onClick={() => refetch()}>
+            <UpdateIcon />
+            <Typography variant="caption" marginLeft={1} color="GrayText">
+              Weather updated {moment.unix(data.dt).fromNow()}
+            </Typography>
+          </IconButton>
+          <WeatherInfo weatherData={data} />
         </CardContent>
       </Card>
     </Grid>
