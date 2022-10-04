@@ -1,8 +1,9 @@
-import { AppBar, Box, Toolbar, Switch, Typography } from '@mui/material'
+import { AppBar, Box, Toolbar, Switch, Typography, Button } from '@mui/material'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
+import DeleteIcon from '@mui/icons-material/Delete'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../context/store'
+import { REDUX_KEY, RootState } from '../context/store'
 import { ThemeType } from '../types/config.types'
 import { changeTheme } from '../context/slices/configSlice'
 import { Link } from 'react-router-dom'
@@ -18,6 +19,11 @@ const NavBar = (): JSX.Element => {
       return
     }
     dispatch(changeTheme(ThemeType.light))
+  }
+
+  const handleDeleteCache = (): void => {
+    window.localStorage.removeItem(`persist:${REDUX_KEY}`)
+    window.location.reload()
   }
 
   return (
@@ -39,6 +45,9 @@ const NavBar = (): JSX.Element => {
             checked={theme !== ThemeType.light}
             onClick={handleChangeTheme}
           />
+          <Button variant='text' color='inherit' startIcon={<DeleteIcon />} onClick={handleDeleteCache}>
+            Delete data
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

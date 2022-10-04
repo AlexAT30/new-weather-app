@@ -16,8 +16,9 @@ const reducers = combineReducers({
   [weatherApi.reducerPath]: weatherApi.reducer
 })
 
+export const REDUX_KEY = 'weather-app-v1'
 const persistConfig = {
-  key: 'root',
+  key: REDUX_KEY,
   storage
 }
 

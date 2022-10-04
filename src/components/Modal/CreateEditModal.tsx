@@ -109,7 +109,7 @@ const CreateEditModal = ({
     const geoData = await searchCity()
     if (geoData === null) return
     const newUser: User_I = {
-      id: users.length > 0 ? users.length + 1 : 1,
+      id: users.length > 0 ? users[users.length - 1].id + 1 : 1,
       username,
       city: geoData.name,
       state: geoData.region,
